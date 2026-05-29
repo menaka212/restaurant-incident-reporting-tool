@@ -124,6 +124,7 @@ The Restaurant Incident Reporting Tool is a web-based application designed to he
 
 ## 🚀 Installation
 git clone https://github.com/menaka212/restaurant-incident-reporting-tool
+
 cd restaurant-incident-tool
 
 pip install -r requirements.txt
