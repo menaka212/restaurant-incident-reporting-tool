@@ -126,9 +126,8 @@ The Restaurant Incident Reporting Tool is a web-based application built using Dj
 
 ## 📝 Create Incident
 
-![Create Incident](<Screenshot 2026-05-29 111147.png >)
-(<Screenshot 2026-05-29 111135.png>)
-
+![Create Incident](<Screenshot 2026-05-29 111135-1.png>)
+![Incident Submission](<Screenshot 2026-05-29 111147-1.png>)
 ---
 
 ## 👨‍💼 Admin View
