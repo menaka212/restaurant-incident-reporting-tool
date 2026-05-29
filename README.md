@@ -147,7 +147,7 @@ The Restaurant Incident Reporting Tool is a web-based application built using Dj
 ### 🚀 Deployed Application
 
 ```text
-https://your-app-name.onrender.com
+https://restaurant-incident-reporting-tool.onrender.com
 ```
 
 ---
