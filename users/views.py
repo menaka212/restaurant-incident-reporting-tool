@@ -63,3 +63,30 @@ def create_admin(request):
 
     except Exception as e:
         return HttpResponse(f"ERROR: {e}")
+    
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def create_users(request):
+
+    if not User.objects.filter(username='staff1').exists():
+        User.objects.create_user(
+            username='staff1',
+            password='Staff@123'
+        )
+
+    if not User.objects.filter(username='manager').exists():
+        User.objects.create_user(
+            username='manager',
+            password='Manager@123'
+        )
+
+    return HttpResponse("Users Created")
+
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def check_passwords(request):
+    user = User.objects.first()
+
+    return HttpResponse(user.password)
