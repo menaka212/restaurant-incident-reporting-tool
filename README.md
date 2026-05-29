@@ -71,16 +71,16 @@ The Restaurant Incident Reporting Tool is a web-based application designed to he
 ## 🔑 Demo Credentials
 
 ### 🛡️ Admin
-Username: admin
-Password: Admin@123
+- Username: admin
+- Password: Admin@123
 
 ### 👨‍💼 Manager
-Username: manager_chennai
-Password: Manager@123
+- Username: manager_chennai
+- Password: Manager@123
 
 ### 👷 Staff
-Username: staff_kfc
-Password: Staff@123
+- Username: staff_kfc
+- Password: Staff@123
 
 ---
 
@@ -139,53 +139,53 @@ python manage.py runserver
 ## 🗄️ Database Models
 
 ### 🏪 Store
-Store Name
-City
-Address
+- Store Name
+- City
+- Address
 
 ### 🚨 Incident
-Title
-Description
-Category
-Severity
-Status
-Attachment
-Store
-Created By
-Created At
+- Title
+- Description
+- Category
+- Severity
+- Status
+- Attachment
+- Store
+- Created By
+- Created At
 
 ---
 
 ## 📊 System Workflow
 
--1️⃣ Staff logs in and reports an incident.
--2️⃣ Incident is stored in PostgreSQL database.
--3️⃣ Managers/Admins monitor incidents through the dashboard.
--4️⃣ Admin updates status and resolves issues.
--5️⃣ Analytics dashboard displays incident statistics.
+- 1️⃣ Staff logs in and reports an incident.
+- 2️⃣ Incident is stored in PostgreSQL database.
+- 3️⃣ Managers/Admins monitor incidents through   the dashboard.
+- 4️⃣ Admin updates status and resolves issues.
+- 5️⃣ Analytics dashboard displays incident statistics.
 
 ---
 
 ## 📸 Features Demonstrated
 
--✅ Authentication System
--✅ Role-Based Access Control
--✅ Multi-Store Management
--✅ Incident CRUD Operations
--✅ File Upload Support
--✅ Dashboard Analytics
--✅ Responsive Design
--✅ PostgreSQL Integration
--✅ Render Deployment Ready
+- ✅ Authentication System
+- ✅ Role-Based Access Control
+- ✅ Multi-Store Management
+- ✅ Incident CRUD Operations
+- ✅ File Upload Support
+- ✅ Dashboard Analytics
+- ✅ Responsive Design
+- ✅ PostgreSQL Integration
+- ✅ Render Deployment Ready
 
 ---
 
 ## 🔮 Future Enhancements
 
--🤖 AI-Powered Incident Categorization
--📧 Email Notifications
--🔔 Real-Time Alerts
--🏬 Store-Specific Manager Permissions
--📈 Advanced Analytics & Reporting
+- 🤖 AI-Powered Incident Categorization
+- 📧 Email Notifications
+- 🔔 Real-Time Alerts
+- 🏬 Store-Specific Manager Permissions
+- 📈 Advanced Analytics & Reporting
 
 ---
