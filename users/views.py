@@ -44,24 +44,23 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 def create_admin(request):
-
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser(
+    try:
+        admin_user, created = User.objects.get_or_create(
             username='admin',
-            email='admin@gmail.com',
-            password='Admin@123'
+            defaults={
+                'email': 'admin@gmail.com',
+                'is_staff': True,
+                'is_superuser': True,
+            }
         )
 
-    if not User.objects.filter(username='staff_abc').exists():
-        User.objects.create_user(
-            username='staff_abc',
-            password='Staff@123'
+        if created:
+            admin_user.set_password('Admin@123')
+            admin_user.save()
+
+        return HttpResponse(
+            f"Total users in database: {User.objects.count()}"
         )
 
-    if not User.objects.filter(username='manager_chennai').exists():
-        User.objects.create_user(
-            username='manager_chennai',
-            password='Manager@123'
-        )
-
-    return HttpResponse("Users Created Successfully")
+    except Exception as e:
+        return HttpResponse(f"ERROR: {e}")
