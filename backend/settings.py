@@ -139,5 +139,5 @@ LOGOUT_REDIRECT_URL = 'login'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com"
+    "https://restaurant-incident-reporting-tool.onrender.com/"
 ]
