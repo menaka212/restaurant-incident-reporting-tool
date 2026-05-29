@@ -155,3 +155,10 @@ def delete_incident(request, pk):
 
     messages.success( request, 'Incident deleted successfully!' )
     return redirect('dashboard')
+
+from django.core.management import call_command
+from django.http import HttpResponse
+
+def load_data(request):
+    call_command('loaddata', 'data.json')
+    return HttpResponse("Data Loaded Successfully")
