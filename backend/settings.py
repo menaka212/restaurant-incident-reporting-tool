@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e#dfd*2bh-5+kafje5-*a*hxhxayv0_kx5^t08$)ne&=us4szh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 import dj_database_url
 import os
 ALLOWED_HOSTS = ['*']
@@ -81,17 +81,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restaurant_incidents',
-        'USER': 'postgres',
-        'PASSWORD': 'menaka',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
+DATABASES = { 
+    "default": dj_database_url.config( 
+        default=os.environ.get("DATABASE_URL") ) 
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -141,4 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.onrender.com"
+]
