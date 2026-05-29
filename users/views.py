@@ -39,3 +39,29 @@ def check_users(request):
     return HttpResponse(
         "<br>".join([user.username for user in users])
     )
+
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def create_admin(request):
+
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser(
+            username='admin',
+            email='admin@gmail.com',
+            password='Admin@123'
+        )
+
+    if not User.objects.filter(username='staff_abc').exists():
+        User.objects.create_user(
+            username='staff_abc',
+            password='Staff@123'
+        )
+
+    if not User.objects.filter(username='manager_chennai').exists():
+        User.objects.create_user(
+            username='manager_chennai',
+            password='Manager@123'
+        )
+
+    return HttpResponse("Users Created Successfully")
