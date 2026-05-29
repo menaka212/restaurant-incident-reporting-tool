@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +30,8 @@ urlpatterns = [
     path('delete/<int:pk>/', delete_incident, name='delete_incident'),
 
     path('logout/', logout_view, name='logout'),
+    path('', include('users.urls')),
+    path('', include('incidents.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

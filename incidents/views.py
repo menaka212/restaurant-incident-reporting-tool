@@ -162,9 +162,3 @@ from django.http import HttpResponse
 def load_data(request):
     call_command('loaddata', 'data.json')
     return HttpResponse("Data Loaded Successfully")
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-
-def check_users(request):
-    users = User.objects.all().values_list('username', flat=True)
-    return HttpResponse("<br>".join(users))

@@ -26,3 +26,16 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def check_users(request):
+    users = User.objects.all()
+
+    if not users.exists():
+        return HttpResponse("NO USERS FOUND")
+
+    return HttpResponse(
+        "<br>".join([user.username for user in users])
+    )
