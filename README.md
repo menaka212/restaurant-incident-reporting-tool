@@ -1,131 +1,163 @@
-## 🍽️ Restaurant Incident Reporting Tool
+# 🍽️ Restaurant Incident Reporting Tool
 
-### 📌 Overview
+## 📌 Overview
 
-The Restaurant Incident Reporting Tool is a web-based application designed to help restaurant staff report operational incidents and enable managers/admins to track, monitor, and resolve issues across multiple store locations.
+The Restaurant Incident Reporting Tool is a web-based application built using Django and PostgreSQL to help restaurant staff report operational incidents and enable administrators to monitor, track, and resolve issues across multiple store locations.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-### 🔹 Core Features
+## 🔹 Core Features
 
 - 📝 Incident Reporting
-- 📊 Incident Dashboard
-- 🔄 Incident Status Management
-- 📁 File/Image Upload
+- 📊 Interactive Dashboard
+- 🔄 Incident Status Tracking
+- 📁 File/Image Upload Support
 - 🔍 Search & Filtering
-- 🐘 PostgreSQL Database
+- 🏪 Multi-Store Incident Management
+- 🐘 PostgreSQL Database Integration
 
-### 🔹 Bonus Features
+## 🔹 Additional Features
 
-- 🔐 Authentication & Login
-- 👥 Role-Based Access Control
-- 🏪 Multi-Store Support
-- 📱 Responsive UI
-- 📈 Analytics Dashboard
+- 🔐 User Authentication & Login
+- 👥 Role-Based User Access
+- 📈 Analytics Dashboard with Charts
+- 📱 Responsive Bootstrap UI
 - 🔔 Toast Notifications
+- ☁️ Cloud Deployment using Render
 
 ---
 
-## 👨‍💼 User Roles
+# 👥 User Roles
 
-### 🛡️ Admin
+## 🛡️ Admin
+
 - View all incidents
+- Create incidents
 - Update incidents
 - Delete incidents
 - Manage stores
 - Manage users
+- View analytics dashboard
+- Access Django Admin Panel
 
-### 👨‍💻 Manager
+## 👨‍💼 Manager
+
 - Monitor incidents
 - View dashboard analytics
 - Track store operations
+- Review incident reports
 
-### 👷 Staff
+## 👷 Staff
+
 - Create incidents
+- Upload supporting files/images
 - View own incidents
-- Upload supporting files
+- Track incident status
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-### 🔙 Backend
+## 🔙 Backend
 
 - 🐍 Python
 - 🎯 Django
-- 🐘 PostgreSQL
 
-### 🎨 Frontend
+## 🗄️ Database
+
+- 🐘 PostgreSQL
+- ☁️ Neon Database
+
+## 🎨 Frontend
 
 - 🌐 HTML5
 - 🎨 CSS3
 - 🅱️ Bootstrap 5
 - 📊 Chart.js
 
-### ☁️ Deployment
+## 🚀 Deployment
 
-- 🚀 Render
-
-## 🔑 Demo Credentials
-
-### 🛡️ Admin
-- Username: admin
-- Password: Admin@123
-
-### 👨‍💼 Manager
-- Username: manager_chennai
-- Password: Manager@123
-
-### 👷 Staff
-- Username: staff_kfc
-- Password: Staff@123
+- ☁️ Render
+- 🐘 Neon PostgreSQL
 
 ---
 
-## 📸 Application Screenshots
+# 🔑 Demo Credentials
 
-### 🔐 Login Page
+## 🛡️ Admin
+
+- Username: `admin`
+- Password: `Admin@123`
+
+## 👨‍💼 Manager
+
+- Username: `manager_chennai`
+- Password: `Manager@123`
+
+## 👷 Staff
+
+- Username: `staff1`
+- Password: `Staff@123`
+
+---
+
+# 📸 Application Screenshots
+
+## 🔐 Login Page
 
 ![Login Page](<Screenshot 2026-05-29 110829.png>)
 
 ---
 
-### 📊 Dashboard
+## 📊 Dashboard
 
-![Dashboard](<Screenshot 2026-05-29 110957.png>)
-
----
-
-### 📈 Analytics Dashboard
-
-![Analytics](<Screenshot 2026-05-29 111016.png>)
-![Incidents](<Screenshot 2026-05-29 111027.png>)
----
-
-### 📝 Create Incident
-
-![Create Incident](<Screenshot 2026-05-29 111135.png>)
-![Submission](<Screenshot 2026-05-29 111147.png>)
+![Dashboard]Screenshot 2026-05-29 110957.png
 
 ---
 
-### 👨‍💼 Admin View
+## 📈 Analytics Dashboard
 
-![Admin View](<Screenshot 2026-05-29 111203.png>)
----
-
-### 👷 Staff View
-
-![Staff View](<Screenshot 2026-05-29 111245.png>)
+![Analytics]Screenshot 2026-05-29 111016.png
+![alt text](<Screenshot 2026-05-29 111027.png>)
 
 ---
 
-## 🚀 Installation
-git clone https://github.com/menaka212/restaurant-incident-reporting-tool
+## 📝 Create Incident
 
-cd restaurant-incident-tool
+![Create Incident]Screenshot 2026-05-29 111147.png Screenshot 2026-05-29 111135.png
+
+---
+
+## 👨‍💼 Admin View
+
+![Admin View]Screenshot 2026-05-29 111203.png
+
+---
+
+## 👷 Staff View
+
+![Staff View]Screenshot 2026-05-29 111245.png
+
+---
+
+# 🌐 Live Demo
+
+### 🚀 Deployed Application
+
+```text
+https://your-app-name.onrender.com
+```
+
+---
+
+# ⚙️ Installation
+
+```bash
+git clone https://github.com/menaka212/restaurant-incident-reporting-tool.git
+
+cd restaurant-incident-reporting-tool
 
 pip install -r requirements.txt
 
@@ -134,17 +166,20 @@ python manage.py migrate
 python manage.py createsuperuser
 
 python manage.py runserver
+```
 
 ---
 
-## 🗄️ Database Models
+# 🗄️ Database Models
 
-### 🏪 Store
-- Store Name
+## 🏪 Store
+
+- Name
 - City
 - Address
 
-### 🚨 Incident
+## 🚨 Incident
+
 - Title
 - Description
 - Category
@@ -157,36 +192,53 @@ python manage.py runserver
 
 ---
 
-## 📊 System Workflow
+# 📊 System Workflow
 
-- 1️⃣ Staff logs in and reports an incident.
-- 2️⃣ Incident is stored in PostgreSQL database.
-- 3️⃣ Managers/Admins monitor incidents through   the dashboard.
-- 4️⃣ Admin updates status and resolves issues.
-- 5️⃣ Analytics dashboard displays incident statistics.
+1️⃣ User logs into the system.
+
+2️⃣ Staff reports an operational incident.
+
+3️⃣ Incident is stored in Neon PostgreSQL Database.
+
+4️⃣ Admin monitors incidents through the dashboard.
+
+5️⃣ Incident status is updated and resolved.
+
+6️⃣ Analytics dashboard displays incident statistics.
 
 ---
 
-## 📸 Features Demonstrated
+# 📸 Features Demonstrated
 
 - ✅ Authentication System
 - ✅ Role-Based Access Control
-- ✅ Multi-Store Management
+- ✅ Multi-Store Support
 - ✅ Incident CRUD Operations
 - ✅ File Upload Support
 - ✅ Dashboard Analytics
-- ✅ Responsive Design
 - ✅ PostgreSQL Integration
-- ✅ Render Deployment Ready
+- ✅ Neon Database Connectivity
+- ✅ Responsive UI
+- ✅ Render Cloud Deployment
 
 ---
 
-## 🔮 Future Enhancements
+# 🔮 Future Enhancements
 
-- 🤖 AI-Powered Incident Categorization
+- 🤖 AI-Based Incident Categorization
 - 📧 Email Notifications
 - 🔔 Real-Time Alerts
-- 🏬 Store-Specific Manager Permissions
-- 📈 Advanced Analytics & Reporting
+- 📈 Advanced Reporting
+- 🏪 Store-Specific Permissions
+- 📊 Predictive Incident Analytics
 
 ---
+
+# 👩‍💻 Developed By
+
+**Menaka Manavalan**
+
+Full Stack Developer | Django Developer
+
+---
+⭐ If you found this project useful, feel free to star the repository.
