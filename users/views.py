@@ -33,13 +33,12 @@ from django.http import HttpResponse
 def check_users(request):
     users = User.objects.all()
 
-    if not users.exists():
-        return HttpResponse("NO USERS FOUND")
+    output = f"Total Users: {users.count()}<br><br>"
 
-    return HttpResponse(
-        "<br>".join([user.username for user in users])
-    )
+    for user in users:
+        output += f"{user.username}<br>"
 
+    return HttpResponse(output)
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
