@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow border-0">
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h3 class="fw-bold">
+                All Incidents
+            </h3>
+
+            <a href="/create/" class="btn btn-dark">
+                + Create Incident
+            </a>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Severity</th>
+                        <th>Status</th>
+                        <th>Store</th>
+                        <th>Attachment</th>
+                        <th>Created By</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for incident in incidents %}
+
+                    <tr>
+
+                        <td>
+                            <strong>{{ incident.title }}</strong>
+                        </td>
+
+                        <td>
+                            {{ incident.category }}
+                        </td>
+
+                        <!-- Severity Badge -->
+
+                        <td>
+
+                            {% if incident.severity == 'Critical' %}
+
+                                <span class="badge bg-danger">
+                                    Critical
+                                </span>
+
+                            {% elif incident.severity == 'High' %}
+
+                                <span class="badge bg-warning text-dark">
+                                    High
+                                </span>
+
+                            {% elif incident.severity == 'Medium' %}
+
+                                <span class="badge bg-primary">
+                                    Medium
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <!-- Status Badge -->
+
+                        <td>
+
+                            {% if incident.status == 'Open' %}
+
+                                <span class="badge bg-danger">
+                                    Open
+                                </span>
+
+                            {% elif incident.status == 'In Progress' %}
+
+                                <span class="badge bg-warning text-dark">
+                                    In Progress
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Resolved
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ incident.store }}
+                        </td>
+
+                        <!-- Attachment -->
+
+                        <td>
+
+                            {% if incident.attachment %}
+
+                                <img src="{{ incident.attachment.url }}"
+                                     width="70"
+                                     height="70"
+                                     class="rounded shadow-sm"
+                                     style="object-fit: cover;">
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    No File
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <!-- Created By -->
+
+                        <td>
+                            {{ incident.created_by }}
+                        </td>
+
+                        <!-- Actions -->
+
+                        <td>
+
+                            {% if request.user.is_superuser %}
+
+                                <a href="/update/{{ incident.id }}/"
+                                   class="btn btn-warning btn-sm">
+                                   Edit
+                                </a>
+
+                                <a href="/delete/{{ incident.id }}/"
+                                   class="btn btn-danger btn-sm">
+                                   Delete
+                                </a>
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    No Permission
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                {% empty %}
+
+                    <tr>
+
+                        <td colspan="8" class="text-center text-muted py-4">
+
+                            No incidents found.
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,439 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">
+                Dashboard
+            </h2>
+
+            <p class="text-muted">
+                Restaurant Incident Monitoring System
+            </p>
+        </div>
+
+        <a href="/create/" class="btn btn-dark shadow">
+            <i class="bi bi-plus-circle"></i>
+            Create Incident
+        </a>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="row g-4">
+
+        <!-- Total Incidents -->
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-lg bg-primary text-white dashboard-card">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <h6>Total Incidents</h6>
+                            <h1 class="fw-bold">
+                                {{ total_incidents }}
+                            </h1>
+                        </div>
+
+                        <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Critical -->
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-lg bg-danger text-white dashboard-card">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <h6>Critical</h6>
+                            <h1 class="fw-bold">
+                                {{ critical_incidents }}
+                            </h1>
+                        </div>
+
+                        <i class="bi bi-fire fs-1"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Open -->
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-lg bg-warning dashboard-card">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <h6>Open</h6>
+                            <h1 class="fw-bold">
+                                {{ open_incidents }}
+                            </h1>
+                        </div>
+
+                        <i class="bi bi-clock-history fs-1"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+<!-- Total Stores -->
+
+<div class="col-md-3">
+
+    <div class="card border-0 shadow-lg bg-info text-white dashboard-card">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <h6>Total Stores</h6>
+
+                    <h1 class="fw-bold">
+                        {{ total_stores }}
+                    </h1>
+
+                </div>
+
+                <i class="bi bi-shop fs-1"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- Resolved -->
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-lg bg-success text-white dashboard-card">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+                            <h6>Resolved</h6>
+                            <h1 class="fw-bold">
+                                {{ resolved_incidents }}
+                            </h1>
+                        </div>
+
+                        <i class="bi bi-check-circle-fill fs-1"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+
+    <div class="row mt-5">
+
+        <!-- Severity Chart -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Incidents by Severity
+                    </h5>
+
+                    <canvas id="severityChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Status Chart -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Incident Status
+                    </h5>
+
+                    <canvas id="statusChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Incidents -->
+
+    <div class="card shadow border-0 mt-5">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4 class="fw-bold">
+                    Recent Incidents
+                </h4>
+
+                <a href="/incidents/" class="btn btn-outline-dark btn-sm">
+                    View All
+                </a>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Store</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for incident in incidents %}
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    {{ incident.title }}
+                                </strong>
+                            </td>
+
+                            <td>
+                                {{ incident.category }}
+                            </td>
+
+                            <!-- Severity Badge -->
+
+                            <td>
+
+                                {% if incident.severity == 'Critical' %}
+
+                                    <span class="badge bg-danger">
+                                        Critical
+                                    </span>
+
+                                {% elif incident.severity == 'High' %}
+
+                                    <span class="badge bg-warning text-dark">
+                                        High
+                                    </span>
+
+                                {% elif incident.severity == 'Medium' %}
+
+                                    <span class="badge bg-primary">
+                                        Medium
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge bg-success">
+                                        Low
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <!-- Status Badge -->
+
+                            <td>
+
+                                {% if incident.status == 'Open' %}
+
+                                    <span class="badge bg-danger">
+                                        Open
+                                    </span>
+
+                                {% elif incident.status == 'In Progress' %}
+
+                                    <span class="badge bg-warning text-dark">
+                                        In Progress
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge bg-success">
+                                        Resolved
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+                                {{ incident.store }}
+                            </td>
+
+                        </tr>
+
+                    {% empty %}
+
+                        <tr>
+
+                            <td colspan="5" class="text-center text-muted">
+
+                                No incidents available.
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Dashboard Styling -->
+
+<style>
+
+.dashboard-card {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+</style>
+
+<!-- Chart.js -->
+
+<script>
+
+    // Severity Chart
+
+    const severityCtx = document.getElementById('severityChart');
+
+    new Chart(severityCtx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['Critical', 'High', 'Medium', 'Low'],
+
+            datasets: [{
+                label: 'Incidents',
+
+                data: [
+
+                    {{ critical_incidents }},
+                    3,
+                    2,
+                    1
+
+                ],
+
+                borderWidth: 1
+
+            }]
+
+        }
+
+    });
+
+    // Status Chart
+
+    const statusCtx = document.getElementById('statusChart');
+
+    new Chart(statusCtx, {
+
+        type: 'doughnut',
+
+        data: {
+
+            labels: ['Open', 'Resolved'],
+
+            datasets: [{
+                data: [
+
+                    {{ open_incidents }},
+                    {{ resolved_incidents }}
+
+                ],
+
+                borderWidth: 1
+
+            }]
+
+        }
+
+    });
+
+</script>
+
+{% endblock %}
